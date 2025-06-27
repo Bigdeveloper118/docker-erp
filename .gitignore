@@ -1,0 +1,24 @@
+# Docker Volumes
+/data/mysql/
+
+# ERPNext Sites และ Apps
+/sites/
+/apps/
+
+# Env file เก็บ Password
+.env
+
+# Logs และ Temp Files
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Python Cache
+__pycache__/
+*.pyc

@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: erpnext
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+  redis-cache:
+    image: redis:6
+    ports:
+      - "13000:6379"
+
+  redis-queue:
+    image: redis:6
+    ports:
+      - "11000:6379"
+
+  redis-socketio:
+    image: redis:6
+    ports:
+      - "12000:6379"
+
+  erpnext:
+    build: .
+    depends_on:
+      - mariadb
+      - redis-cache
+      - redis-queue
+      - redis-socketio
+    ports:
+      - "8000:8000"
+    environment:
+      - SITE_NAME=${SITE_NAME}
+      - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - REDIS_CACHE=redis://redis-cache:6379/0
+      - REDIS_QUEUE=redis://redis-queue:6379/1
+      - REDIS_SOCKETIO=redis://redis-socketio:6379/2
+
+    volumes:
+      - ./sites:/home/frappe/frappe-bench/sites
+      - ./apps:/home/frappe/frappe-bench/apps
