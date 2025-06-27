@@ -1,9 +1,19 @@
-make file .env for root user, password
+# Frappe/ERPNext/HRMS Setup
 
+โปรเจกต์นี้ใช้สำหรับเตรียมระบบ Frappe, ERPNext และ HRMS โดยมี Makefile ช่วยสร้างไฟล์ตั้งค่าพื้นฐานและจัดการสร้างไซต์อัตโนมัติ
 
+## สิ่งที่ Makefile ทำ
 
-make common site config.json
+* สร้างไฟล์ `.env` สำหรับกำหนดผู้ใช้ root และรหัสผ่าน
+* สร้างไฟล์ `common_site_config.json` สำหรับตั้งค่าระบบหลัก เช่น ฐานข้อมูล Redis, MariaDB และ SocketIO
+* สร้างไซต์พร้อมใช้งานสำหรับ Frappe, ERPNext และ HRMS
 
+## ข้อกำหนดเบื้องต้น
 
+* ต้องติดตั้ง Docker และ Docker Compose
+* ต้องมีคำสั่ง `make`
 
-make site freppe, erp next and hrms
+## หมายเหตุ
+
+* การตั้งค่าสามารถปรับเปลี่ยนค่าเริ่มต้นได้ เช่น ชื่อผู้ใช้ root, รหัสผ่าน หรือชื่อไซต์
+* เหมาะสำหรับการพัฒนาและทดสอบระบบ Frappe/ERPNext ด้วย Docker
