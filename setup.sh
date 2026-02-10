@@ -13,7 +13,9 @@ docker-compose exec -T erpnext bash << 'EOFBASH'
 cd /home/frappe/frappe-bench
 
 # Ensure common config is correct
-cat > sites/common_site_config.json << 'EOF'
+if [ ! -f sites/common_site_config.json ]; then
+  echo "Creating common_site_config.json..."
+  cat > sites/common_site_config.json << 'EOF'
 {
   "db_host": "mariadb",
   "redis_cache": "redis://redis-cache:6379",
@@ -21,6 +23,10 @@ cat > sites/common_site_config.json << 'EOF'
   "redis_socketio": "redis://redis-socketio:6379"
 }
 EOF
+  echo "common_site_config.json created successfully"
+else
+  echo "common_site_config.json already exists, skipping..."
+fi
 
 # Create site
 bench new-site library.localhost \
