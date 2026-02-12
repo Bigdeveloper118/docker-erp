@@ -32,7 +32,8 @@ services:
     restart: unless-stopped
 
   erpnext:
-    image: frappe/erpnext:v15.20.1
+    build: .
+    image: Dockerfile
     restart: unless-stopped
     environment:
       - MARIADB_HOST=mariadb
