@@ -48,7 +48,7 @@ services:
         condition: service_healthy
 
   nginx:
-    image: frappe/erpnext:v15.20.1
+    image: frappe/erpnext:v15.29.1
     restart: unless-stopped
     command: ["nginx-entrypoint.sh"]
     environment:
@@ -62,7 +62,7 @@ services:
       - erpnext
 
   queue-short:
-    image: frappe/erpnext:v15.20.1
+    image: frappe/erpnext:v15.29.1
     restart: unless-stopped
     command: ["bench", "worker", "--queue", "short"]
     environment:
@@ -77,7 +77,7 @@ services:
       - erpnext
 
   queue-default:
-    image: frappe/erpnext:v15.20.1
+    image: frappe/erpnext:v15.29.1
     restart: unless-stopped
     command: ["bench", "worker", "--queue", "default"]
     environment:
@@ -92,7 +92,7 @@ services:
       - erpnext
 
   queue-long:
-    image: frappe/erpnext:v15.20.1
+    image: frappe/erpnext:v15.29.1
     restart: unless-stopped
     command: ["bench", "worker", "--queue", "long"]
     environment:
@@ -107,7 +107,7 @@ services:
       - erpnext
 
   scheduler:
-    image: frappe/erpnext:v15.20.1
+    image: frappe/erpnext:v15.29.1
     restart: unless-stopped
     command: ["bench", "schedule"]
     environment:
