@@ -32,8 +32,9 @@ services:
     restart: unless-stopped
 
   erpnext:
-    build: .
-    image: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       - MARIADB_HOST=mariadb
