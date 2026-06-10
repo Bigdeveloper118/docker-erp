@@ -219,7 +219,7 @@ Auto-generated with proper service connections:
 ```
 {
  "user_type_doctype_limit": {
-  "Employee Self Service": 1000
+  "employee_self_service": 1000
  }
 }
 ```
