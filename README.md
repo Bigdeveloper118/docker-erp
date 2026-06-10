@@ -215,7 +215,14 @@ Auto-generated with proper service connections:
   "socketio_port": 9000
 }
 ```
-
+### site_config.json in site installed
+```
+{
+ "user_type_doctype_limit": {
+  "Employee Self Service": 1000
+ }
+}
+```
 ### .env Variables
 ```env
 DB_ROOT_PASSWORD=<MariaDB root password>
